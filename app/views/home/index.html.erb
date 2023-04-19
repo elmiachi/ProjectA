@@ -1,1 +1,68 @@
-<h1>Test0411</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <ul class="list-group">
+        <li class="list-group-item">
+          類別
+          <ul class="list-group">
+            <li class="list-group-item">副類別</li>
+            <li class="list-group-item">副類別</li>
+            <li class="list-group-item">副類別</li>
+            <li class="list-group-item">副類別</li>
+          </ul>
+        </li>
+        <li class="list-group-item">
+          類別
+          <ul class="list-group">
+            <li class="list-group-item">副類別</li>
+            <li class="list-group-item">副類別</li>
+            <li class="list-group-item">副類別</li>
+            <li class="list-group-item">副類別</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="col-lg-9">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="p-3 mb-2 bg-secondary text-white">
+            <h1><%= @ad[:title] %></h1>
+            <p><%= @ad[:des] %></p>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button"><%= @ad[:action_title] %></a></p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <% @products.each do |product| %>
+           <div class="col-lg-3">
+            <div class="img-thumbnail">
+                <img src=<%= product[:image_url] %> class="img-thumbnail" alt="...">
+                <div class="caption">
+                    <h3><%="#{product[:id]}. #{product[:name]}" %></h3>
+                    <p><%= product[:description] %></p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+            </div> 
+        <% end %>  
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                <% if @page > @first_page%>
+                    <li class="page-item"><a class="page-link" href="<%= root_path(page: (@page - 1)) %>"><span aria-hidden="true">&laquo;</span></a></li>
+                <% end %>
+                <% (@first_page..@last_page).each do |page_number| %>
+                  <li class="page-item"><a class="page-link" href="<%= root_path(page: page_number) %>" ><%= page_number %></a></li>
+                <% end %>
+                <% if @page < @last_page %>
+                    <li class="page-item"><a class="page-link" href="<%= root_path(page: (@page + 1)) %>"><span aria-hidden="true">&raquo;</span></a></li>
+                <% end %>
+              </ul>
+            </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
