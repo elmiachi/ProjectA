@@ -1,0 +1,2 @@
+class AddPriceInProductTable < ApplicationRecord
+end
